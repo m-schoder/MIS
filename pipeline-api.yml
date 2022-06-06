@@ -1,0 +1,40 @@
+
+trigger:
+- master
+
+pool:
+  name: MIS Project Agents
+  demands:
+   - agent.name -equals MIS Project Agent
+
+variables:
+  solution: '**/backend/**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET SDK (6.0)'
+  inputs:
+    packageType: sdk
+    version: 6.0.100
+    includePreviewVersions: true
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+- task: DotNetCoreCLI@2
+  displayName: Restore NuGet packages
+  inputs:
+    command: 'restore'
+    projects: | 
+      **/src/MIS.Common.*/*.csproj
+      **/src/MIS.Backend.*/*.csproj
+- task: DotNetCoreCLI@2
+  displayName: Build Solution
+  inputs:
+    command: 'build'
+    projects: | 
+      **/src/MIS.Common.*/*.csproj
+      **/src/MIS.Backend.*/*.csproj
+
+- script: |
+    rmdir -rf ./src/MIS.Backend.Api/bin/Release/publish
+    dotnet publish ./src/MIS.Backend.Api --configuration "Release" --os linux --arch x64 --output ./src/MIS.Backend.Api/bin/Release/publish

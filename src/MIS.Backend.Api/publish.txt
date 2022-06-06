@@ -1,0 +1,8 @@
+﻿dotnet publish -c Release -r linux-arm64
+
+/etc/systemd/system/misapi.service
+sudo systemctl daemon-reload
+sudo systemctl status misapi
+sudo systemctl start misapi.service
+sudo systemctl enable misapi.service
+sudo journalctl -u misapi -e

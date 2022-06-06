@@ -1,0 +1,10 @@
+[Unit]
+Description=MIS.Middleware.Processor
+
+[Service]
+Type=notify
+WorkingDirectory=/home/pi/mis/
+ExecStart=/home/pi/mis/MIS.Middleware.Processor
+
+[Install]
+WantedBy=multi-user.target

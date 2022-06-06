@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MIS.Frontend.App.ViewModels;assembly=MIS.Frontend.App"
+             xmlns:design="clr-namespace:MIS.Frontend.App.ViewModels.Design;assembly=MIS.Frontend.App"
+             x:Class="MIS.Frontend.App.Views.MainPage"
+             x:DataType="viewModels:MainPageViewModel"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <design:MainPageDesignViewModel/>   
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto">
+        <Entry
+            Grid.Row="1"
+            FontSize="Large"
+            HorizontalTextAlignment="Center"
+            Placeholder="API Service Host Address"
+            Text="{Binding ServiceBaseUrl}"/>
+        <Entry
+            Grid.Row="2"
+            FontSize="Large"
+            HorizontalTextAlignment="Center"
+            Placeholder="API Key"
+            IsPassword="True"
+            Text="{Binding ApiKey}"/>
+        <Button
+            Grid.Row="3"
+            FontSize="Large"
+            Text="Reload API Data"
+            Command="{Binding ReloadConfig}"/>
+        <Button
+            Grid.Row="4"
+            FontSize="Large"
+            Command="{Binding ToggleSolenoid}"
+            Text="{Binding DisplayInformation}"
+            BackgroundColor="{Binding BackgroundColor}"/>
+    </Grid>
+</ContentPage>

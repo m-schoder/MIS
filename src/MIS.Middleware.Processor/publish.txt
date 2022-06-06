@@ -1,0 +1,8 @@
+﻿dotnet publish -c Release -r linux-arm
+
+/etc/systemd/system/misprocessor.service
+sudo systemctl daemon-reload
+sudo systemctl status misapi
+sudo systemctl start misprocessor.service
+sudo systemctl enable misprocessor.service
+sudo journalctl -u misprocessor -e

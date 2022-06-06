@@ -1,0 +1,43 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "MIS.Common.Protobuf";
+
+package greet;
+
+service IrrigationSystemService {
+
+	rpc SwitchOn (SwitchOnRequest) returns (SwitchOnResponse);
+
+	rpc SwitchOff (SwitchOffRequest) returns (SwitchOffResponse);
+
+	rpc GetState (GetStateRequest) returns (GetStateResponse);
+
+	rpc SayHello (HelloRequest) returns (HelloResponse);
+}
+
+message GetStateRequest {
+}
+
+message GetStateResponse {
+	bool isSolenoidOn = 1;
+}
+
+message SwitchOnRequest {
+}
+
+message SwitchOnResponse {
+}
+
+message SwitchOffRequest {
+}
+
+message SwitchOffResponse {
+}
+
+message HelloRequest {
+	string name = 1;
+}
+
+message HelloResponse {
+	string message = 1;
+}

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MIS.Backend.Models\MIS.Backend.Models.csproj" />
+    <ProjectReference Include="..\MIS.Common.DataTransferObjects\MIS.Common.DataTransferObjects.csproj" />
+  </ItemGroup>
+
+</Project>

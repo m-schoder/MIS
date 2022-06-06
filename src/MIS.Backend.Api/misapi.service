@@ -1,0 +1,10 @@
+[Unit]
+Description=MIS.Backend.Api
+
+[Service]
+Type=notify
+WorkingDirectory=/var/www/mis/
+ExecStart=/var/www/mis/MIS.Backend.Api
+
+[Install]
+WantedBy=multi-user.target
